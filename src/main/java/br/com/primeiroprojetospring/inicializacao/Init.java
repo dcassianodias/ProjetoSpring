@@ -31,11 +31,11 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		alunoService.save(aluno1);
 		
 		Aluno aluno2 = new Aluno();
-		aluno2.setNome("Roberto");
+		aluno2.setNome("Viviane");
 		alunoService.save(aluno2);
 		
 		Aluno aluno3 = new Aluno();
-		aluno3.setNome("Carlos");
+		aluno3.setNome("Thabata");
 		alunoService.save(aluno3);
 		
 		List<Aluno> listaAluno = alunoService.findAll();
