@@ -23,6 +23,7 @@ public class Professor implements Serializable {
 	@Column(name = "ID_PROFESSOR")
 	private Integer id;
 	
+	@Column(name="NOME_PROFESSOR")
 	private String nome;
 
 	public Integer getId() {
