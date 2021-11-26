@@ -22,6 +22,7 @@ public class Aluno implements Serializable {
 	@Column(name = "ID_ALUNO")
 	private Integer id;
 	
+	@Column(nome="ALUNO_NOME")
 	private String nome;
 
 	public Integer getId() {
