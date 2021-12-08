@@ -11,7 +11,13 @@ import javax.persistence.Id;
 @Entity
 public class Documento implements Serializable {
 	
-	private static final long serialVersionUID = -955769089251692025L;
+	
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2120657991366258757L;
 
 
 	@Id
