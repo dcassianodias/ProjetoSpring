@@ -32,8 +32,7 @@ public class FabricanteService {
 	public Fabricante salvarAlteracao(Fabricante fabricanteAlterado) throws ObjectNotFoundException {
 		Fabricante fabricante = buscarFabricanteID(fabricanteAlterado.getId());
 		fabricante.setId(fabricanteAlterado.getId());
-		fabricante.setNome(fabricanteAlterado.getNome());
-		fabricante.setPais(fabricanteAlterado.getPais());
+		fabricante.setNome(fabricanteAlterado.getNome());		
 		return salvar(fabricante);
 	}
 	

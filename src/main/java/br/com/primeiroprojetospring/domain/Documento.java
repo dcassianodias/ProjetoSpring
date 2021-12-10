@@ -8,16 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+
+
+@Data
 @Entity
 public class Documento implements Serializable {
 	
-	
-
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2120657991366258757L;
+	private static final long serialVersionUID = -955769089251692025L;
 
 
 	@Id
@@ -30,28 +28,4 @@ public class Documento implements Serializable {
 	
 	@Column(name="CODIGO_DOCUMENTO")
 	private String codigo;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}	
 }

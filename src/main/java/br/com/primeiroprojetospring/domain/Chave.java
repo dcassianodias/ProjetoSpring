@@ -8,41 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
 
-@Entity(name = "TABELA_CHAVE")
+
+@Data
+@Entity
 public class Chave implements Serializable {
-	
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4492246752547242827L;
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_CHAVE")
 	private Integer id;
 	
-	
-	@Column(name = "CODIGO_CHAVE")
-	private String codigo;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}	
-}
-
-	
+	@Column(name="CODIGO_CHAVE")
+	private String codigo;	
+}	

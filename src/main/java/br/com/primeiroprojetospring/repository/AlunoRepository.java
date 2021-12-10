@@ -9,11 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import br.com.primeiroprojetospring.domain.Aluno;
 
-
-
 @Repository
-public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
+public interface AlunoRepository extends JpaRepository<Aluno, Integer>{
 	
-//	@Query("SELECT a FROM Aluno a WHERE a.nome = :nomeAluno")
-//	List<Aluno> findByNomeAlunoJPQL(@Param("nomeAluno") String nomeAluno);
+	@Query("SELECT a "
+			+"FROM Aluno a "
+			+"WHERE a.nome = :nomeAluno")	
+	List<Aluno> findByNomeAlunoJPQL(@Param("nomeAluno") String nomeAluno);
+	
 }

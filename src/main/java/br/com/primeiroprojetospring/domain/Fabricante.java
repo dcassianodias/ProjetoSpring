@@ -8,17 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+
+
+@Data
 @Entity
 public class Fabricante implements Serializable {
 	
 
-	
-
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4704572114742635897L;
+	private static final long serialVersionUID = 5886410820555858910L;
 
 
 	@Id
@@ -30,30 +28,6 @@ public class Fabricante implements Serializable {
 	private String nome;
 	
 	@Column(name="PAIS_FABRICANTE")
-	private String pais;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public String getPais() {
-		return pais;
-	}
-
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}	
-	
+	private String pais;	
 }
+
