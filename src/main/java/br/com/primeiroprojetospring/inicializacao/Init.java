@@ -1,8 +1,11 @@
 package br.com.primeiroprojetospring.inicializacao;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import br.com.primeiroprojetospring.domain.Acessorio;
@@ -10,11 +13,17 @@ import br.com.primeiroprojetospring.domain.Aluno;
 import br.com.primeiroprojetospring.domain.Chave;
 import br.com.primeiroprojetospring.domain.Documento;
 import br.com.primeiroprojetospring.domain.Fabricante;
+import br.com.primeiroprojetospring.domain.Permissao;
+import br.com.primeiroprojetospring.domain.Role;
+import br.com.primeiroprojetospring.domain.Usuario;
 import br.com.primeiroprojetospring.repository.AlunoRepository;
 import br.com.primeiroprojetospring.service.AcessorioService;
 import br.com.primeiroprojetospring.service.ChaveService;
+import br.com.primeiroprojetospring.service.CurrentUserDetailsService;
 import br.com.primeiroprojetospring.service.DocumentoService;
 import br.com.primeiroprojetospring.service.FabricanteService;
+import br.com.primeiroprojetospring.service.PermissaoService;
+import br.com.primeiroprojetospring.service.RoleService;
 
 @Component
 public class Init implements ApplicationListener<ContextRefreshedEvent>{
@@ -34,6 +43,15 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 
 	@Autowired
 	private DocumentoService documentoService;
+	
+	@Autowired
+	private RoleService roleService;
+	
+	@Autowired
+	private CurrentUserDetailsService usuarioService;
+	
+	@Autowired
+	private PermissaoService permissaoService;
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -107,5 +125,54 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		Acessorio a3 = new Acessorio();
 		a3.setNome("Banco Couro");
 		acessorioService.salvar(a3);
+		
+		Usuario usuario = new Usuario();
+		usuario.setNomeCompleto("Danilo Dias");
+		usuario.setLogin("admin");
+		usuario.setPassword(new BCryptPasswordEncoder()
+				.encode("1234"));
+		
+		Role roleAdmin = new Role();
+		roleAdmin.setNomeRole(Role.ROLE_ADMIN);
+		roleService.salvar(roleAdmin);
+		
+		usuario.setRoles(Arrays.asList(roleAdmin));
+		usuarioService.salvar(usuario);
+		
+	//##############################################
+		
+		Usuario usuario2 = new Usuario();
+		usuario2.setNomeCompleto("Thabata Dias");
+		usuario2.setLogin("thabata");
+		usuario2.setPassword(new BCryptPasswordEncoder()
+				.encode("1234"));
+		
+		Role roleUser = new Role();
+		roleUser.setNomeRole(Role.ROLE_USER);
+		roleService.salvar(roleUser);
+		
+		usuario2.setRoles(Arrays.asList(roleUser));
+	
+		Permissao permissaoUser = new Permissao();
+		permissaoUser.setNomePermissao(Permissao.INSERT);
+		permissaoService.salvar(permissaoUser);
+		
+		usuario2.setPermissoes(Arrays.asList(permissaoUser));
+		
+		usuarioService.salvar(usuario2);
+		//#######################################
+		//#######################################
+		
+		Usuario usuario3 = new Usuario();
+		usuario3.setNomeCompleto("Viviane Dias");
+		usuario3.setLogin("viviane");
+		usuario3.setPassword(new BCryptPasswordEncoder()
+				.encode("1234"));		
+		
+		roleService.salvar(roleUser);
+		
+		usuario3.setRoles(Arrays.asList(roleUser));		
+		
+		usuarioService.salvar(usuario3);
 	}
 }
